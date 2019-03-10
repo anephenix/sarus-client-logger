@@ -1,0 +1,39 @@
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background: #eaeaea;
+  border-radius: 5px;
+  width: 600px;
+
+  label {
+    font-size: 12pt;
+    color: #777;
+  }
+
+  input[type='text'] {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin: 0px 10px;
+    font-size: 12pt;
+    width: 250px;
+    color: #444;
+  }
+
+  button {
+    font-size: 12pt;
+    border-radius: 5px;
+    background: rgb(108, 180, 0);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    transition: background 0.2s linear;
+
+    &:hover {
+      cursor: pointer;
+      background: rgb(158, 230, 50);
+    }
+  }
+}

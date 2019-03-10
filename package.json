@@ -1,0 +1,25 @@
+{
+  "name": "sarus-client-logger",
+  "version": "0.0.1",
+  "description": "A client-side log application for Sarus",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "sarus"
+  ],
+  "author": "Paul Jensen <paul@anephenix.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@anephenix/sarus": "^0.1.0",
+    "@zeit/next-sass": "^1.0.1",
+    "next": "^8.0.3",
+    "node-sass": "^4.11.0",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
+  }
+}

@@ -1,0 +1,109 @@
+#event-logger {
+  display: flex;
+  flex-direction: column;
+  border: solid 1px #eaeaea;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  width: 600px;
+  height: 400px;
+  overflow: scroll;
+}
+
+@keyframes fadein {
+  from {
+    margin-top: -5px;
+    opacity: 0;
+  }
+
+  to {
+    margin-top: 5px;
+    opacity: 1;
+  }
+}
+.event {
+  margin: 5px 0px;
+  padding: 5px;
+  border-radius: 3px;
+  background: #fafafa;
+  color: #777;
+  font-size: 10pt;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 20px;
+  animation-duration: 0.5s;
+  animation-name: fadein;
+
+  &.open {
+    background: #d5ff72;
+    color: rgb(95, 146, 37);
+
+    .close-button {
+      color: #d5ff72;
+      background: rgb(95, 146, 37);
+    }
+  }
+
+  &.message {
+    background: #d2feff;
+    color: rgb(65, 159, 202);
+
+    .close-button {
+      color: #d2feff;
+      background: rgb(65, 159, 202);
+    }
+  }
+
+  &.error {
+    background: #ffea72;
+    color: rgb(131, 124, 65);
+
+    .close-button {
+      color: #ffea72;
+      background: rgb(131, 124, 65);
+    }
+  }
+
+  &.close {
+    background: #ffd2d2;
+    color: rgb(177, 73, 73);
+    .close-button {
+      color: #ffd2d2;
+      background: rgb(177, 73, 73);
+    }
+  }
+
+  .status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 6pt;
+    text-transform: uppercase;
+    width: 60px;
+  }
+
+  .date {
+    display: flex;
+    font-size: 10pt;
+    width: 90px;
+    padding-left: 10px;
+  }
+
+  .info {
+    font-size: 10pt;
+    display: flex;
+    width: 410px;
+  }
+
+  .close-button {
+    width: 15px;
+    height: 15px;
+    border-radius: 8px;
+    font-size: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+}
