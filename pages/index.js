@@ -5,6 +5,7 @@ import Sarus from '@anephenix/sarus';
 // File Dependencies
 import '../styles/homepage.scss';
 import '../styles/theme.scss';
+import '../styles/SocketStatus.scss';
 import '../styles/WebSocketForm.scss';
 import '../styles/EventLogger.scss';
 
@@ -26,7 +27,7 @@ class WebSocketForm extends Component {
           <label htmlFor="websocket-server">WebSocket server url</label>
           <input
             type="text"
-            placeholder="e.g. wss://ws.anephenix.com"
+            placeholder="e.g. ws://echo.websocket.org"
             name="websocket-server"
           />
           <button type="submit">Connect</button>
@@ -56,6 +57,36 @@ const EventItem = ({ date, type, info, close }) => {
     </div>
   );
 };
+
+class SocketStatus extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    const { sarus } = this.props;
+    if (!sarus) return null;
+    const { readyState } = sarus.ws;
+    let status;
+    switch (readyState) {
+      case 0:
+        status = 'connecting';
+        break;
+      case 1:
+        status = 'open';
+        break;
+      case 2:
+        status = 'closing';
+        break;
+      default:
+        status = 'closed';
+    }
+    return (
+      <div id="socket-status" className={status}>
+        WebSocket Status: {status}
+      </div>
+    );
+  }
+}
 
 class EventLogger extends Component {
   constructor(props) {
@@ -163,6 +194,7 @@ class HomePage extends Component {
         <h1>Sarus client logger</h1>
         <p>Type in the url for your WebSocket server, and press Connect.</p>
         <WebSocketForm onSubmit={this.createConnection} />
+        <SocketStatus sarus={sarus} />
         <EventLogger sarus={sarus} eventLog={eventLog} />
       </div>
     );

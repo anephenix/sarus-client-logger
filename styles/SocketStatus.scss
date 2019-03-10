@@ -1,0 +1,26 @@
+#socket-status {
+  width: 600px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  margin: 10px 0px;
+  border: solid 1px #eaeaea;
+  color: #777;
+  border-radius: 5px;
+
+  &.connecting,
+  &.open {
+    background: #d5ff72;
+    color: rgb(95, 146, 37);
+  }
+
+  &.closing {
+    background: #ffea72;
+    color: rgb(131, 124, 65);
+  }
+
+  &.closed {
+    background: #ffd2d2;
+    color: rgb(177, 73, 73);
+  }
+}
