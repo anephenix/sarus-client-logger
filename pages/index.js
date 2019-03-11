@@ -27,7 +27,7 @@ class WebSocketForm extends Component {
           <label htmlFor="websocket-server">WebSocket server url</label>
           <input
             type="text"
-            placeholder="e.g. ws://echo.websocket.org"
+            placeholder="e.g. wss://echo.websocket.org"
             name="websocket-server"
           />
           <button type="submit">Connect</button>
