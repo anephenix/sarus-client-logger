@@ -1,26 +1,52 @@
 #socket-status {
-  width: 600px;
   padding: 10px;
   display: flex;
   align-items: center;
   margin: 10px 0px;
-  border: solid 1px #eaeaea;
-  color: #777;
   border-radius: 5px;
+  color: white;
+  align-items: center;
+  justify-content: center;
 
-  &.connecting,
+  &.connecting {
+    color: #d5ff72;
+  }
   &.open {
-    background: #d5ff72;
     color: rgb(95, 146, 37);
   }
 
   &.closing {
-    background: #ffea72;
-    color: rgb(131, 124, 65);
+    color: #ffea72;
   }
 
   &.closed {
-    background: #ffd2d2;
     color: rgb(177, 73, 73);
+  }
+
+  .symbol {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    margin: 10px;
+
+    &.connecting {
+      background: #d5ff72;
+      box-shadow: 0px 0px 10px #d5ff72;
+    }
+
+    &.open {
+      background: rgb(95, 146, 37);
+      box-shadow: 0px 0px 10px rgba(95, 146, 37, 1);
+    }
+
+    &.closing {
+      background: #ffea72;
+      box-shadow: 0px 0px 10px rgba(255, 234, 114, 1);
+    }
+
+    &.closed {
+      background: rgb(177, 73, 73);
+      box-shadow: 0px 0px 10px rgba(177, 73, 73, 1);
+    }
   }
 }

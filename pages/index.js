@@ -23,24 +23,37 @@ class WebSocketForm extends Component {
   render() {
     return (
       <div id="websocket-form">
+        <SocketStatus sarus={this.props.sarus} />
+
         <form onSubmit={this.connect}>
-          <label htmlFor="websocket-server">WebSocket server url</label>
-          <input
-            type="text"
-            placeholder="e.g. wss://echo.websocket.org"
-            name="websocket-server"
-          />
-          <button type="submit">Connect</button>
+          <div id="main-form">
+            <input
+              type="text"
+              placeholder="type in the WebSocket url here"
+              name="websocket-server"
+            />
+            <button type="submit">Connect</button>
+          </div>
+          <div id="advanced-form">
+            <label>
+              Reconnect automatically
+              <input type="checkbox" name="reconnectAutomatically" checked />
+            </label>
+            <label>
+              Retry connection delay
+              <input type="checkbox" name="retryConnectionDelay" checked />
+            </label>
+          </div>
         </form>
       </div>
     );
   }
 }
 
-const EventItem = ({ date, type, info, close }) => {
+const EventItem = ({ date, type, info, close }, index) => {
   const className = `event ${type}`;
   return (
-    <div className={className}>
+    <div className={className} key={index}>
       <div className="status">{type}</div>
       <div className="date">
         {
@@ -80,9 +93,11 @@ class SocketStatus extends Component {
       default:
         status = 'closed';
     }
+
+    const className = `symbol ${status}`;
     return (
       <div id="socket-status" className={status}>
-        WebSocket Status: {status}
+        <div className={className} /> {status}
       </div>
     );
   }
@@ -103,6 +118,39 @@ class EventLogger extends Component {
   }
 }
 
+class CanvasComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { width: 1280, height: 800 };
+  }
+
+  componentDidMount() {
+    // this.setState({ width: window.innerWidth, height: innerHeight });
+    this.updateCanvas();
+  }
+
+  updateCanvas() {
+    const ctx = this.refs.canvas.getContext('2d');
+    const colors = ['#000', '#111', '#222', '#333'];
+    const factor = 5;
+    const line = 5;
+
+    for (let i = 0; i <= window.innerWidth; i += factor + line) {
+      for (let y = 0; y <= window.innerWidth; y += factor + line) {
+        const randomNumber = Math.floor(colors.length * Math.random());
+        ctx.fillStyle = colors[randomNumber];
+        ctx.fillRect(i, y, factor, factor);
+      }
+    }
+    // ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+    // draw children “components”
+  }
+  render() {
+    const { width, height } = this.state;
+    return <canvas ref="canvas" width={width} height={height} />;
+  }
+}
+
 class HomePage extends Component {
   constructor(props) {
     super(props);
@@ -118,6 +166,10 @@ class HomePage extends Component {
     const self = this;
     const { eventLog } = self.state;
     const url = event.target.getElementsByTagName('input')[0].value;
+    const reconnectAutomatically = event.target.getElementsByTagName('input')[1]
+      .checked;
+    const retryConnectionDelay = event.target.getElementsByTagName('input')[2]
+      .checked;
     const close = date => {
       return () => {
         const evntLog = self.state.eventLog;
@@ -128,9 +180,11 @@ class HomePage extends Component {
         self.setState({ eventLog: evntLog });
       };
     };
+
     const sarus = new Sarus({
       url,
-      retryConnectionDelay: true,
+      reconnectAutomatically,
+      retryConnectionDelay,
       eventListeners: {
         open: [
           () => {
@@ -184,18 +238,19 @@ class HomePage extends Component {
         ]
       }
     });
+    window.x = sarus;
     this.setState({ sarus, url });
   }
 
   render() {
     const { sarus, eventLog } = this.state;
     return (
-      <div id="homepage">
-        <h1>Sarus client logger</h1>
-        <p>Type in the url for your WebSocket server, and press Connect.</p>
-        <WebSocketForm onSubmit={this.createConnection} />
-        <SocketStatus sarus={sarus} />
-        <EventLogger sarus={sarus} eventLog={eventLog} />
+      <div id="container">
+        <CanvasComponent />
+        <div id="homepage">
+          <WebSocketForm onSubmit={this.createConnection} sarus={sarus} />
+          <EventLogger sarus={sarus} eventLog={eventLog} />
+        </div>
       </div>
     );
   }
