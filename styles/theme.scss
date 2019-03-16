@@ -7,24 +7,24 @@ body {
   padding: 0;
 }
 
-@keyframes loop {
-  0% {
-    opacity: 0;
-  }
+// @keyframes loop {
+//   0% {
+//     opacity: 0;
+//   }
 
-  50% {
-    opacity: 0.1;
-  }
+//   50% {
+//     opacity: 0.35;
+//   }
 
-  100% {
-    opacity: 0.2;
-  }
-}
+//   100% {
+//     opacity: 0.7;
+//   }
+// }
 
-canvas {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  animation: loop 3s linear;
-  animation-fill-mode: forwards;
-}
+// canvas {
+//   position: absolute;
+//   top: 0px;
+//   left: 0px;
+//   animation: loop 3s linear;
+//   animation-fill-mode: forwards;
+// }
