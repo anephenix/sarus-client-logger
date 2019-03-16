@@ -13,6 +13,7 @@ class WebSocketForm extends Component {
   constructor(props) {
     super(props);
     this.connect = this.connect.bind(this);
+    this.disconnect = this.disconnect.bind(this);
   }
 
   connect(event) {
@@ -20,19 +21,39 @@ class WebSocketForm extends Component {
     this.props.onSubmit(event);
   }
 
+  disconnect() {
+    const self = this;
+    return event => {
+      event.preventDefault();
+      self.props.sarus.disconnect();
+    };
+  }
+
   render() {
+    const { sarus } = this.props;
+    let buttonText = 'Connect';
+    let action = this.connect;
+    let className = 'connect';
+    if (sarus && sarus.ws && sarus.ws.readyState === 1) {
+      className = 'disconnect';
+      buttonText = 'Disconnect';
+      action = this.disconnect();
+    }
+
     return (
       <div id="websocket-form">
-        <SocketStatus sarus={this.props.sarus} />
+        <SocketStatus sarus={sarus} />
 
-        <form onSubmit={this.connect}>
+        <form onSubmit={action}>
           <div id="main-form">
             <input
               type="text"
               placeholder="type in the WebSocket url here"
               name="websocket-server"
             />
-            <button type="submit">Connect</button>
+            <button className={className} type="submit">
+              {buttonText}
+            </button>
           </div>
           <div id="advanced-form">
             <label>
