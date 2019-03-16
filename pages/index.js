@@ -22,14 +22,10 @@ class HomePage extends Component {
     this.createConnection = this.createConnection.bind(this);
   }
 
-  createConnection(event) {
+  createConnection(options) {
     const self = this;
     const { eventLog } = self.state;
-    const url = event.target.getElementsByTagName('input')[0].value;
-    const reconnectAutomatically = event.target.getElementsByTagName('input')[1]
-      .checked;
-    const retryConnectionDelay = event.target.getElementsByTagName('input')[2]
-      .checked;
+    const { url } = options;
     const close = date => {
       return () => {
         const evntLog = self.state.eventLog;
@@ -42,9 +38,7 @@ class HomePage extends Component {
     };
 
     const sarus = new Sarus({
-      url,
-      reconnectAutomatically,
-      retryConnectionDelay,
+      ...options,
       eventListeners: {
         open: [
           () => {

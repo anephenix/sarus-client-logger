@@ -1,6 +1,6 @@
 # TODO
 
-- [ ] Add Validation to the WebSocket form
+- [x] Add Validation to the WebSocket form
 - [x] Sort out background rendering
 - [ ] Sort out the display of events in the timeline
 - [ ] Implement a responsive layout

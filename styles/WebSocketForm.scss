@@ -38,17 +38,22 @@ form {
     padding: 20px;
     padding-left: 25px;
     border-radius: 30px;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
     font-size: 12pt;
     width: 250px;
     color: #fff;
     border: none;
+    transition: border-top-right-radius 0.3s linear,
+      border-bottom-right-radius 0.3s linear;
 
     background: rgba(0, 0, 0, 0.7);
 
     &::placeholder {
       color: rgba(255, 255, 255, 0.3);
+    }
+
+    &.ready {
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
     }
   }
 
@@ -63,7 +68,9 @@ form {
     padding-right: 25px;
     box-shadow: none;
     text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
-    transition: background 0.2s linear, box-shadow 0.2s linear;
+    opacity: 1;
+    transition: background 0.2s linear, box-shadow 0.2s linear,
+      opacity 0.5s linear;
 
     &:hover {
       cursor: pointer;
@@ -86,6 +93,10 @@ form {
         background: rgb(240, 89, 89);
         box-shadow: 0px 0px 20px rgb(240, 89, 89);
       }
+    }
+
+    &:disabled {
+      opacity: 0;
     }
   }
 
