@@ -10,97 +10,97 @@
 
 #websocket-form {
   display: flex;
-}
 
-form {
-  opacity: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  // background: rgba(0, 0, 0, 0.1);
-  // backdrop-filter: blur(5px);
-  // -webkit-backdrop-filter: blur(5px);
-  border-radius: 5px;
-  border: solid 1px rgba(0, 0, 0, 0.05);
-  width: 100%;
-  animation: fadeinto 1s ease-in;
-  animation-fill-mode: forwards;
-  animation-delay: 2s;
-
-  label {
-    font-size: 12pt;
-    color: #fff;
-  }
-
-  input[type='text'] {
+  form {
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: 20px;
-    padding-left: 25px;
-    border-radius: 30px;
-    font-size: 12pt;
-    width: 250px;
-    color: #fff;
-    border: none;
-    transition: border-top-right-radius 0.3s linear,
-      border-bottom-right-radius 0.3s linear;
+    // background: rgba(0, 0, 0, 0.1);
+    // backdrop-filter: blur(5px);
+    // -webkit-backdrop-filter: blur(5px);
+    border-radius: 5px;
+    border: solid 1px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    animation: fadeinto 1s ease-in;
+    animation-fill-mode: forwards;
+    animation-delay: 2s;
 
-    background: rgba(0, 0, 0, 0.7);
-
-    &::placeholder {
-      color: rgba(255, 255, 255, 0.3);
+    label {
+      font-size: 12pt;
+      color: #fff;
     }
 
-    &.ready {
-      border-top-right-radius: 0px;
-      border-bottom-right-radius: 0px;
-    }
-  }
+    input[type='text'] {
+      padding: 20px;
+      padding-left: 25px;
+      border-radius: 30px;
+      font-size: 12pt;
+      width: 250px;
+      color: #fff;
+      border: none;
+      transition: border-top-right-radius 0.3s linear,
+        border-bottom-right-radius 0.3s linear;
 
-  button {
-    font-size: 12pt;
-    border-radius: 30px;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-    color: white;
-    border: none;
-    padding: 20px;
-    padding-right: 25px;
-    box-shadow: none;
-    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
-    opacity: 1;
-    transition: background 0.2s linear, box-shadow 0.2s linear,
-      opacity 0.5s linear;
+      background: rgba(0, 0, 0, 0.7);
 
-    &:hover {
-      cursor: pointer;
-    }
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.3);
+      }
 
-    &.connect {
-      background: rgb(95, 146, 37);
-      // background: #327ba1;
-      &:hover {
-        // background: #8addf8;
-        // box-shadow: 0px 0px 20px #8addf8;
-        background: #a3c456;
-        box-shadow: 0px 0px 20px #a3c456;
+      &.ready {
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
       }
     }
 
-    &.disconnect {
-      background: rgb(177, 73, 73);
+    button {
+      font-size: 12pt;
+      border-radius: 30px;
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+      color: white;
+      border: none;
+      padding: 20px;
+      padding-right: 25px;
+      box-shadow: none;
+      text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
+      opacity: 1;
+      transition: background 0.2s linear, box-shadow 0.2s linear,
+        opacity 0.5s linear;
+
       &:hover {
-        background: rgb(240, 89, 89);
-        box-shadow: 0px 0px 20px rgb(240, 89, 89);
+        cursor: pointer;
+      }
+
+      &.connect {
+        background: rgb(95, 146, 37);
+        // background: #327ba1;
+        &:hover {
+          // background: #8addf8;
+          // box-shadow: 0px 0px 20px #8addf8;
+          background: #a3c456;
+          box-shadow: 0px 0px 20px #a3c456;
+        }
+      }
+
+      &.disconnect {
+        background: rgb(177, 73, 73);
+        &:hover {
+          background: rgb(240, 89, 89);
+          box-shadow: 0px 0px 20px rgb(240, 89, 89);
+        }
+      }
+
+      &:disabled {
+        opacity: 0;
       }
     }
 
-    &:disabled {
-      opacity: 0;
+    #advanced-form {
+      display: none;
     }
-  }
-
-  #advanced-form {
-    display: none;
   }
 }

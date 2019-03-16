@@ -1,6 +1,9 @@
 // NPM Dependencies
 import React, { Component } from 'react';
 
+// File Dependencies
+import '../styles/SocketStatus.scss';
+
 class SocketStatus extends Component {
   constructor(props) {
     super(props);

@@ -10,16 +10,17 @@ const wsPort = 3001;
 const server = http.createServer();
 const wss = new WebSocket.Server({ server });
 
-// This simply prints out a message
-const messageParser = message => {
-  console.log('received: %s', message);
-};
-
 // This broadcasts the message to all open clients
 const broadcast = data => {
   wss.clients.forEach(client => {
     if (client.readyState === WebSocket.OPEN) client.send(data);
   });
+};
+
+// This simply prints out a message
+const messageParser = message => {
+  console.log('received: %s', message);
+  broadcast(message);
 };
 
 // TODO - how to handle subscribe/unsubscribe requests

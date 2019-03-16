@@ -1,0 +1,47 @@
+form#send-message {
+  display: flex;
+  flex-direction: row;
+
+  textarea {
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 30px;
+    padding: 20px;
+    padding-left: 25px;
+    border-radius: 30px;
+    font-size: 12pt;
+    width: 250px;
+    color: #fff;
+    border: none;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+
+    background: rgba(0, 0, 0, 0.7);
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  button {
+    font-size: 12pt;
+    border-radius: 30px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    color: white;
+    border: none;
+    padding: 20px;
+    padding-right: 25px;
+    box-shadow: none;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
+    opacity: 1;
+    background: #327ba1;
+    transition: background 0.2s linear, box-shadow 0.2s linear,
+      opacity 0.5s linear;
+
+    &:hover {
+      cursor: pointer;
+      background: #8addf8;
+      box-shadow: 0px 0px 20px #8addf8;
+    }
+  }
+}

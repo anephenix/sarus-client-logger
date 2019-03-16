@@ -1,6 +1,9 @@
 // NPM Dependencies
 import React, { Component } from 'react';
 
+// File Dependencies
+import '../styles/EventLogger.scss';
+
 const EventItem = ({ date, type, data, info, close }, index) => {
   const className = `event ${type}`;
   let extra;

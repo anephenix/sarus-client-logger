@@ -2,6 +2,9 @@
 import React, { Component } from 'react';
 import SocketStatus from './SocketStatus';
 
+// File Dependencies
+import '../styles/WebSocketForm.scss';
+
 class WebSocketForm extends Component {
   constructor(props) {
     super(props);
