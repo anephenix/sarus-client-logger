@@ -1,23 +1,30 @@
 // NPM Dependencies
 import React, { Component } from 'react';
 
-const EventItem = ({ date, type, info, close }, index) => {
+const EventItem = ({ date, type, data, info, close }, index) => {
   const className = `event ${type}`;
+  let extra;
+  if (type === 'message') {
+    extra = <div className="data">{data}</div>;
+  }
   return (
     <div className={className} key={index}>
-      <div className="status">{type}</div>
-      <div className="date">
-        {
-          date
-            .toISOString()
-            .split('T')[1]
-            .split('Z')[0]
-        }
+      <div className="main-part">
+        <div className="status">{type}</div>
+        <div className="date">
+          {
+            date
+              .toISOString()
+              .split('T')[1]
+              .split('Z')[0]
+          }
+        </div>
+        <div className="info">{info}</div>
+        <div className="close-button" onClick={close}>
+          ×
+        </div>
       </div>
-      <div className="info">{info}</div>
-      <div className="close-button" onClick={close}>
-        ×
-      </div>
+      {extra}
     </div>
   );
 };

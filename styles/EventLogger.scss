@@ -31,48 +31,66 @@
   color: #777;
   font-size: 10pt;
   display: flex;
-  flex-direction: row;
-  align-items: center;
   min-height: 20px;
   animation-duration: 0.5s;
   animation-name: fadein;
+  display: flex;
+  flex-direction: column;
+
+  .main-part {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .data {
+    border-top: dotted 1px rgb(65, 159, 202);
+    margin-top: 5px;
+    padding-top: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    padding-bottom: 5px;
+  }
 
   &.open {
     // background: #d5ff72;
     color: rgb(95, 146, 37);
+    border: solid 1px rgb(95, 146, 37);
 
     .close-button {
-      color: #d5ff72;
-      background: rgb(95, 146, 37);
+      color: rgb(95, 146, 37);
+      border: solid 1px rgb(95, 146, 37);
     }
   }
 
   &.message {
     // background: #d2feff;
     color: rgb(65, 159, 202);
+    border: solid 1px rgb(65, 159, 202);
 
     .close-button {
-      color: #d2feff;
-      background: rgb(65, 159, 202);
+      color: rgb(65, 159, 202);
+      border: solid 1px rgb(65, 159, 202);
     }
   }
 
   &.error {
     color: #ffea72;
-    // color: rgb(131, 124, 65);
+    border: solid 1px #ffea72;
 
     .close-button {
       color: #ffea72;
-      background: rgb(131, 124, 65);
+      border: solid 1px #ffea72;
     }
   }
 
   &.close {
     // background: #ffd2d2;
     color: rgb(177, 73, 73);
+    border: solid 1px rgb(177, 73, 73);
     .close-button {
-      color: #ffd2d2;
-      background: rgb(177, 73, 73);
+      color: rgb(177, 73, 73);
+      border: solid 1px rgb(177, 73, 73);
     }
   }
 
