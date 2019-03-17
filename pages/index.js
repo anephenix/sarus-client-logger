@@ -8,6 +8,7 @@ import '../styles/theme.scss';
 import EventLogger from '../components/EventLogger';
 import WebSocketForm from '../components/WebSocketForm';
 import SendMessage from '../components/SendMessage';
+import SocketStatus from '../components/SocketStatus';
 
 class HomePage extends Component {
   constructor(props) {
@@ -23,7 +24,8 @@ class HomePage extends Component {
   createConnection(options) {
     const self = this;
     const { eventLog } = self.state;
-    const { url } = options;
+    const { url, reconnectAutomatically, retryConnnectionDelay } = options;
+    let { sarus } = this.state;
     const close = date => {
       return () => {
         const evntLog = self.state.eventLog;
@@ -35,11 +37,15 @@ class HomePage extends Component {
       };
     };
 
-    if (this.state.sarus) {
-      this.state.sarus.reconnect();
+    if (sarus) {
+      sarus.url = url;
+      sarus.reconnectAutomatically = reconnectAutomatically;
+      sarus.retryConnnectionDelay = retryConnnectionDelay;
+      this.setState({ sarus, url });
       window.x = this.state.sarus;
+      this.state.sarus.reconnect();
     } else {
-      const sarus = new Sarus({
+      sarus = new Sarus({
         ...options,
         eventListeners: {
           open: [
@@ -48,7 +54,7 @@ class HomePage extends Component {
               eventLog.push({
                 date,
                 type: 'open',
-                info: `Connection on ${url} is open`,
+                info: `Connection on ${self.state.sarus.url} is open`,
                 close: close(date)
               });
               self.setState({ eventLog });
@@ -73,7 +79,7 @@ class HomePage extends Component {
               eventLog.push({
                 date,
                 type: 'close',
-                info: `Connection to ${url} is closed`,
+                info: `Connection to ${self.state.sarus.url} is closed`,
                 close: close(date)
               });
               self.setState({ eventLog });
@@ -103,8 +109,11 @@ class HomePage extends Component {
     const { sarus, eventLog } = this.state;
     return (
       <div id="container">
-        <div id="homepage">
+        <div id="navbar">
+          <SocketStatus sarus={sarus} />
           <WebSocketForm onSubmit={this.createConnection} sarus={sarus} />
+        </div>
+        <div id="homepage">
           <EventLogger sarus={sarus} eventLog={eventLog} />{' '}
           <SendMessage sarus={sarus} />
         </div>

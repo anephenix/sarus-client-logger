@@ -10,6 +10,7 @@
 
 #websocket-form {
   display: flex;
+  justify-content: center;
 
   form {
     opacity: 0;
@@ -17,16 +18,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
-    // background: rgba(0, 0, 0, 0.1);
-    // backdrop-filter: blur(5px);
-    // -webkit-backdrop-filter: blur(5px);
     border-radius: 5px;
     border: solid 1px rgba(0, 0, 0, 0.05);
-    width: 100%;
     animation: fadeinto 1s ease-in;
     animation-fill-mode: forwards;
-    animation-delay: 2s;
+    animation-delay: 1s;
 
     label {
       font-size: 12pt;
@@ -34,42 +30,32 @@
     }
 
     input[type='text'] {
-      padding: 20px;
-      padding-left: 25px;
-      border-radius: 30px;
-      font-size: 12pt;
-      width: 250px;
-      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 10pt;
       border: none;
-      transition: border-top-right-radius 0.3s linear,
-        border-bottom-right-radius 0.3s linear;
-
-      background: rgba(0, 0, 0, 0.7);
+      width: 200px;
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
 
       &::placeholder {
-        color: rgba(255, 255, 255, 0.3);
-      }
-
-      &.ready {
-        border-top-right-radius: 0px;
-        border-bottom-right-radius: 0px;
+        color: rgba(0, 0, 0, 0.3);
       }
     }
 
     button {
-      font-size: 12pt;
-      border-radius: 30px;
+      font-size: 10pt;
+      border-radius: 5px;
       border-top-left-radius: 0px;
       border-bottom-left-radius: 0px;
       color: white;
       border: none;
-      padding: 20px;
-      padding-right: 25px;
+      padding: 10px;
       box-shadow: none;
       text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
       opacity: 1;
       transition: background 0.2s linear, box-shadow 0.2s linear,
-        opacity 0.5s linear;
+        color 0.2s linear, text-shadow 0.2s linear;
 
       &:hover {
         cursor: pointer;
@@ -95,7 +81,16 @@
       }
 
       &:disabled {
-        opacity: 0;
+        background: #eee;
+        color: #eee;
+        text-shadow: none;
+
+        &:hover {
+          background: #eee;
+          color: #eee;
+          text-shadow: none;
+          box-shadow: none;
+        }
       }
     }
 

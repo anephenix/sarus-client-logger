@@ -10,21 +10,21 @@ class SocketStatus extends Component {
   }
   render() {
     const { sarus } = this.props;
-    if (!sarus) return null;
+    if (!sarus) return <div />;
     const { readyState } = sarus.ws;
     let status;
     switch (readyState) {
       case 0:
-        status = 'connecting';
+        status = 'Connecting';
         break;
       case 1:
-        status = 'open';
+        status = 'Connected';
         break;
       case 2:
-        status = 'closing';
+        status = 'Error';
         break;
       default:
-        status = 'closed';
+        status = 'Disconnected';
     }
 
     const className = `symbol ${status}`;

@@ -1,52 +1,55 @@
+$connecting: linear-gradient(#ddf6bc, #b8e986);
+$connectingBorder: #7ed321;
+$connectingShadow: #b8e986;
+$connected: linear-gradient(#cfff6b, #7ed321);
+$connectedBorder: #7ed321;
+$connectedShadow: #7ed321;
+$error: linear-gradient(#fcf53c, #f8e71c);
+$errorBorder: #b8aa00;
+$errorShadow: #f8e71c;
+$closed: linear-gradient(#ff2f60, #d0021b);
+$closedBorder: #d0021b;
+$closedShadow: #d0021b;
+
 #socket-status {
   padding: 10px;
   display: flex;
   align-items: center;
-  margin: 10px 0px;
   border-radius: 5px;
   color: white;
   align-items: center;
-  justify-content: center;
-
-  &.connecting {
-    color: #d5ff72;
-  }
-  &.open {
-    color: rgb(95, 146, 37);
-  }
-
-  &.closing {
-    color: #ffea72;
-  }
-
-  &.closed {
-    color: rgb(177, 73, 73);
-  }
+  font-weight: 200;
+  font-size: 10pt;
+  letter-spacing: 0.05em;
 
   .symbol {
-    width: 20px;
-    height: 20px;
-    border-radius: 10px;
-    margin: 10px;
+    width: 15px;
+    height: 15px;
+    border-radius: 9px;
+    margin: 0px 10px;
 
-    &.connecting {
-      background: #d5ff72;
-      box-shadow: 0px 0px 10px #d5ff72;
+    &.Connecting {
+      border: solid 1px $connectingBorder;
+      background: $connecting;
+      box-shadow: 0px 2px 10px $connectingShadow;
     }
 
-    &.open {
-      background: rgb(95, 146, 37);
-      box-shadow: 0px 0px 10px rgba(95, 146, 37, 1);
+    &.Connected {
+      border: solid 1px $connectedBorder;
+      background: $connected;
+      box-shadow: 0px 2px 10px $connectedShadow;
     }
 
-    &.closing {
-      background: #ffea72;
-      box-shadow: 0px 0px 10px rgba(255, 234, 114, 1);
+    &.Error {
+      border: solid 1px $errorBorder;
+      background: $error;
+      box-shadow: 0px 2px 10px $errorShadow;
     }
 
-    &.closed {
-      background: rgb(177, 73, 73);
-      box-shadow: 0px 0px 10px rgba(177, 73, 73, 1);
+    &.Disconnected {
+      border: solid 1px $closedBorder;
+      background: $closed;
+      box-shadow: 0px 2px 10px $closedShadow;
     }
   }
 }

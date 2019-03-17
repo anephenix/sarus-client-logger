@@ -1,6 +1,5 @@
 // NPM Dependencies
 import React, { Component } from 'react';
-import SocketStatus from './SocketStatus';
 
 // File Dependencies
 import '../styles/WebSocketForm.scss';
@@ -49,8 +48,6 @@ class WebSocketForm extends Component {
     }
     return (
       <div id="websocket-form">
-        <SocketStatus sarus={sarus} />
-
         <form onSubmit={action}>
           <div id="main-form">
             <input
