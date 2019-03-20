@@ -12,15 +12,36 @@ import SocketStatus from '../components/SocketStatus';
 import MessageQueue from '../components/MessageQueue';
 import ConnectionGraph from '../components/ConnectionGraph';
 
+// Hook contexts
+
 class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       url: null,
       sarus: null,
-      eventLog: []
+      eventLog: [],
+      counts: {
+        received: 0,
+        queued: 0,
+        sent: 0
+      }
     };
     this.createConnection = this.createConnection.bind(this);
+    this.incrementCount = this.incrementCount.bind(this);
+    this.setCount = this.setCount.bind(this);
+  }
+
+  setCount(type, number) {
+    const { counts } = this.state;
+    counts[type] = number;
+    this.setState({ counts });
+  }
+
+  incrementCount(type, number = 1) {
+    const { counts } = this.state;
+    counts[type] += number;
+    this.setState({ counts });
   }
 
   createConnection(options) {
@@ -73,6 +94,11 @@ class HomePage extends Component {
                 close: close(date)
               });
               self.setState({ eventLog });
+            },
+            () => {
+              const { counts } = this.state;
+              counts.received++;
+              self.setState({ counts });
             }
           ],
           close: [
@@ -102,18 +128,18 @@ class HomePage extends Component {
           ]
         }
       });
-      window.x = sarus;
       this.setState({ sarus, url });
     }
   }
 
   render() {
-    const { sarus, eventLog } = this.state;
+    const { sarus, eventLog, counts } = this.state;
     return (
       <div id="container">
         <div id="navbar">
-          <SocketStatus sarus={sarus} />
+          <div id="logo">Sarus Client Logger</div>
           <WebSocketForm onSubmit={this.createConnection} sarus={sarus} />
+          <SocketStatus sarus={sarus} />
         </div>
         <div id="homepage">
           <div id="primary-section">
@@ -121,8 +147,13 @@ class HomePage extends Component {
           </div>
           <div id="secondary-section">
             <ConnectionGraph sarus={sarus} />
-            <MessageQueue sarus={sarus} />
-            <SendMessage sarus={sarus} />
+            <MessageQueue
+              sarus={sarus}
+              counts={counts}
+              incrementCount={this.incrementCount}
+              setCount={this.setCount}
+            />
+            <SendMessage sarus={sarus} incrementCount={this.incrementCount} />
           </div>
         </div>
       </div>

@@ -17,6 +17,9 @@ class SendMessage extends Component {
     event.preventDefault();
     const { data } = this.state;
     this.props.sarus.send(data);
+    if (this.props.sarus.ws.readyState === 1) {
+      this.props.incrementCount('sent');
+    }
     this.setState({ data: '' });
   }
 

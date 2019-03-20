@@ -30,7 +30,8 @@ class SocketStatus extends Component {
     const className = `symbol ${status}`;
     return (
       <div id="socket-status" className={status}>
-        <div className={className} /> {status}
+        <div className={className} />
+        <span className="status">{status}</span>
       </div>
     );
   }

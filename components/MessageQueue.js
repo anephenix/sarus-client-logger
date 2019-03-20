@@ -8,9 +8,6 @@ class MessageQueue extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      received: 0,
-      queued: 0,
-      sent: 0,
       check: null
     };
     this.updateQueueCount = this.updateQueueCount.bind(this);
@@ -18,12 +15,13 @@ class MessageQueue extends Component {
 
   updateQueueCount() {
     if (!this.props.sarus) return;
-    const previousCount = this.state.queued;
+    const previousCount = this.props.counts.queued;
     const currentCount = this.props.sarus.messages.length;
-    this.setState({ queued: currentCount });
+
+    this.props.setCount('queued', currentCount);
     if (previousCount > currentCount) {
       const difference = previousCount - currentCount;
-      this.setState({ sent: (this.state.sent += difference) });
+      this.props.incrementCount('sent', difference);
     }
   }
 
@@ -39,7 +37,7 @@ class MessageQueue extends Component {
   render() {
     const { sarus } = this.props;
     if (!sarus) return <div />;
-    const { received, queued, sent } = this.state;
+    const { received, queued, sent } = this.props.counts;
     return (
       <div id="message-queue-component">
         <h2>Message Queue</h2>
