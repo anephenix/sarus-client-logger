@@ -12,7 +12,8 @@ class WebSocketForm extends Component {
     this.state = {
       url: '',
       reconnectAutomatically: true,
-      retryConnectionDelay: true
+      retryConnectionDelay: true,
+      storageType: 'local'
     };
   }
 
@@ -89,6 +90,15 @@ class WebSocketForm extends Component {
                 }
               />
             </label>
+            <label>Message persistence type</label>
+            <select
+              name="storageType"
+              onChange={e => this.setState({ storageType: e.target.value })}
+            >
+              <option value="memory">In-memory</option>
+              <option value="session">Session storage</option>
+              <option value="local">Local storage</option>
+            </select>
           </div>
         </form>
       </div>

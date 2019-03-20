@@ -40,7 +40,12 @@ class EventLogger extends Component {
   render() {
     const { sarus, eventLog } = this.props;
     if (sarus) {
-      return <div id="event-logger">{eventLog.map(EventItem)}</div>;
+      return (
+        <div id="event-logger-component">
+          <h2>Event Log</h2>
+          <div id="event-logger">{eventLog.map(EventItem)}</div>
+        </div>
+      );
     } else {
       return null;
     }

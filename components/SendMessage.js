@@ -25,10 +25,13 @@ class SendMessage extends Component {
     if (!sarus) return null;
     return (
       <div>
+        <h2>Send Message</h2>
         <form id="send-message" onSubmit={this.onSubmit}>
           <textarea
             name="data"
             value={this.state.data}
+            rows="5"
+            placeholder="Type either text or a JSON payload here"
             onChange={e => this.setState({ data: e.target.value })}
           />
           <button>Send</button>

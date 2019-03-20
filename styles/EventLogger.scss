@@ -1,11 +1,16 @@
+$green: rgb(95, 146, 37);
+$blue: rgb(65, 159, 202);
+$yellow: #ffea72;
+$red: rgb(177, 73, 73);
+
 #event-logger {
   display: flex;
   flex-direction: column;
   border: solid 1px rgba(255, 255, 255, 0.05);
   border-radius: 5px;
   padding: 40px;
-  margin: 10px;
-  width: 600px;
+  margin: 10px 0px;
+  width: calc(100% - 100px);
   height: 400px;
   overflow: scroll;
   background: rgba(0, 0, 0, 0.05);
@@ -27,70 +32,62 @@
   margin: 5px 0px;
   padding: 5px;
   border-radius: 3px;
-  // background: #fafafa;
   color: #777;
   font-size: 10pt;
   display: flex;
-  min-height: 20px;
+  min-height: 35px;
   animation-duration: 0.5s;
   animation-name: fadein;
   display: flex;
+  width: 100%;
   flex-direction: column;
 
   .main-part {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
   }
 
   .data {
-    border-top: dotted 1px rgb(65, 159, 202);
+    border-top: dotted 1px $blue;
     margin-top: 5px;
-    padding-top: 10px;
+    padding: 10px 10px 10px 10px;
     font-family: 'Courier New', Courier, monospace;
-    padding-bottom: 5px;
   }
 
   &.open {
-    // background: #d5ff72;
-    color: rgb(95, 146, 37);
-    border: solid 1px rgb(95, 146, 37);
+    color: $green;
 
     .close-button {
-      color: rgb(95, 146, 37);
-      border: solid 1px rgb(95, 146, 37);
+      color: $green;
+      border: solid 1px $green;
     }
   }
 
   &.message {
-    // background: #d2feff;
-    color: rgb(65, 159, 202);
-    border: solid 1px rgb(65, 159, 202);
+    color: $blue;
 
     .close-button {
-      color: rgb(65, 159, 202);
-      border: solid 1px rgb(65, 159, 202);
+      color: $blue;
+      border: solid 1px $blue;
     }
   }
 
   &.error {
-    color: #ffea72;
-    border: solid 1px #ffea72;
+    color: $yellow;
 
     .close-button {
-      color: #ffea72;
-      border: solid 1px #ffea72;
+      color: $yellow;
+      border: solid 1px $yellow;
     }
   }
 
   &.close {
-    // background: #ffd2d2;
-    color: rgb(177, 73, 73);
-    border: solid 1px rgb(177, 73, 73);
+    color: $red;
     .close-button {
-      color: rgb(177, 73, 73);
-      border: solid 1px rgb(177, 73, 73);
+      color: $red;
+      border: solid 1px $red;
     }
   }
 
@@ -125,5 +122,6 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    margin-right: 5px;
   }
 }

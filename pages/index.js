@@ -9,6 +9,8 @@ import EventLogger from '../components/EventLogger';
 import WebSocketForm from '../components/WebSocketForm';
 import SendMessage from '../components/SendMessage';
 import SocketStatus from '../components/SocketStatus';
+import MessageQueue from '../components/MessageQueue';
+import ConnectionGraph from '../components/ConnectionGraph';
 
 class HomePage extends Component {
   constructor(props) {
@@ -114,8 +116,14 @@ class HomePage extends Component {
           <WebSocketForm onSubmit={this.createConnection} sarus={sarus} />
         </div>
         <div id="homepage">
-          <EventLogger sarus={sarus} eventLog={eventLog} />{' '}
-          <SendMessage sarus={sarus} />
+          <div id="primary-section">
+            <EventLogger sarus={sarus} eventLog={eventLog} />{' '}
+          </div>
+          <div id="secondary-section">
+            <ConnectionGraph sarus={sarus} />
+            <MessageQueue sarus={sarus} />
+            <SendMessage sarus={sarus} />
+          </div>
         </div>
       </div>
     );

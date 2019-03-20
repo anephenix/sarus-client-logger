@@ -1,0 +1,30 @@
+#message-queue-component {
+  display: flex;
+  flex-direction: column;
+}
+
+#metrics {
+  display: grid;
+  grid-template-columns: 33.3% 33.3% 33.3%;
+  grid-template-rows: 100%;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.count {
+  font-size: 28pt;
+  font-weight: bold;
+}
+
+.label {
+  font-weight: 300;
+  margin-top: 5px;
+  font-size: 8pt;
+  text-transform: uppercase;
+}

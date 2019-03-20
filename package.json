@@ -16,7 +16,7 @@
   "author": "Paul Jensen <paul@anephenix.com>",
   "license": "MIT",
   "dependencies": {
-    "@anephenix/sarus": "^0.2.0",
+    "@anephenix/sarus": "^0.2.1",
     "@zeit/next-sass": "^1.0.1",
     "next": "^8.0.3",
     "node-sass": "^4.11.0",
