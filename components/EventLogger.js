@@ -42,7 +42,10 @@ class EventLogger extends Component {
     if (sarus) {
       return (
         <div id="event-logger-component">
-          <h2>Event Log</h2>
+          <h2>
+            Event Log ({eventLog.length}{' '}
+            {eventLog.length !== 1 ? 'events' : 'event'})
+          </h2>
           <div id="event-logger">{eventLog.map(EventItem)}</div>
         </div>
       );

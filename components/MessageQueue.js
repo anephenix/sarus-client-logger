@@ -18,7 +18,9 @@ class MessageQueue extends Component {
     const previousCount = this.props.counts.queued;
     const currentCount = this.props.sarus.messages.length;
 
-    this.props.setCount('queued', currentCount);
+    if (previousCount !== currentCount) {
+      this.props.setCount('queued', currentCount);
+    }
     if (previousCount > currentCount) {
       const difference = previousCount - currentCount;
       this.props.incrementCount('sent', difference);

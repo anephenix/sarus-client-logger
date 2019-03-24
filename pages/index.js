@@ -10,7 +10,7 @@ import WebSocketForm from '../components/WebSocketForm';
 import SendMessage from '../components/SendMessage';
 import SocketStatus from '../components/SocketStatus';
 import MessageQueue from '../components/MessageQueue';
-import ConnectionGraph from '../components/ConnectionGraph';
+// import ConnectionGraph from '../components/ConnectionGraph';
 
 // Hook contexts
 
@@ -146,7 +146,6 @@ class HomePage extends Component {
             <EventLogger sarus={sarus} eventLog={eventLog} />{' '}
           </div>
           <div id="secondary-section">
-            <ConnectionGraph sarus={sarus} />
             <MessageQueue
               sarus={sarus}
               counts={counts}
