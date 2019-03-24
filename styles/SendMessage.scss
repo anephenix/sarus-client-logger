@@ -9,8 +9,8 @@ form#send-message {
     font-size: 10pt;
     width: calc(100% - 20px);
     border: none;
-    margin-bottom: 10px;
-
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
     &::placeholder {
       color: rgba(0, 0, 0, 0.6);
     }
@@ -19,6 +19,8 @@ form#send-message {
   button {
     font-size: 10pt;
     border-radius: 5px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
     color: white;
     border: none;
     padding: 10px;

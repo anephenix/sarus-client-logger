@@ -28,7 +28,7 @@ class SendMessage extends Component {
     if (!sarus) return null;
     return (
       <div>
-        <h2>Send Message</h2>
+        <h2>Send a message</h2>
         <form id="send-message" onSubmit={this.onSubmit}>
           <textarea
             name="data"

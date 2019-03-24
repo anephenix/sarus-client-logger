@@ -42,7 +42,7 @@ class MessageQueue extends Component {
     const { received, queued, sent } = this.props.counts;
     return (
       <div id="message-queue-component">
-        <h2>Message Queue</h2>
+        <h2>WebSocket messages</h2>
         <div id="metrics">
           <div className="metric">
             <div className="count">{received}</div>

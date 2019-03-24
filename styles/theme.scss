@@ -9,5 +9,9 @@ body {
 
 #container {
   min-height: 100vh;
-  background: linear-gradient(180deg, #090a0c, #2a4677);
+  background: radial-gradient(
+    ellipse closest-corner at center center,
+    hsl(198, 100%, 20%) 0%,
+    hsla(204, 100%, 20%, 0) 100%
+  );
 }

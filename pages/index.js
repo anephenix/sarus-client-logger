@@ -146,13 +146,13 @@ class HomePage extends Component {
             <EventLogger sarus={sarus} eventLog={eventLog} />{' '}
           </div>
           <div id="secondary-section">
+            <SendMessage sarus={sarus} incrementCount={this.incrementCount} />
             <MessageQueue
               sarus={sarus}
               counts={counts}
               incrementCount={this.incrementCount}
               setCount={this.setCount}
             />
-            <SendMessage sarus={sarus} incrementCount={this.incrementCount} />
           </div>
         </div>
       </div>
