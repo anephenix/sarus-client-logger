@@ -19,8 +19,8 @@
     "@anephenix/sarus": "^0.2.1",
     "@zeit/next-sass": "^1.0.1",
     "d3": "^5.9.2",
-    "next": "^8.0.3",
-    "node-sass": "^4.11.0",
+    "next": "^8.1.0",
+    "node-sass": "^4.12.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "ws": "^6.2.0"
