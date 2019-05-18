@@ -24,5 +24,8 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "ws": "^6.2.0"
+  },
+  "devDependencies": {
+    "tar": "^4.4.8"
   }
 }
